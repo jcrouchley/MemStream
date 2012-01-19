@@ -1,6 +1,11 @@
 #ifndef MEMSTREAM_h
 #define MEMSTREAM_h
+
+#if ARDUINO >= 100
+#include <Arduino.h>
+#else
 #include <WProgram.h>
+#endif
 
 class Memory
 {
@@ -24,7 +29,7 @@ class MemStream : public Stream
     virtual int peek(void);
     virtual int read(void);
     virtual void flush(void);
-    virtual void write(uint8_t);
+    virtual size_t write(uint8_t);
     using Print::write; // pull in write(str) and write(buf, size) from Print
 };
 

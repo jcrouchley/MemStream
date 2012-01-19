@@ -24,17 +24,24 @@ write:       Open a writestream, write a byte and close the stream
 digital pin 13    SCK
 digital pin 12    MISO
 digital pin 11    MOSI
-digital pin 9     SS
+specified in constructor    SS
 */
 #ifndef SRAMSPI_h
 #define SRAMSPI_h
+
+#if ARDUINO >= 100
+#include <Arduino.h>
+#else
+#include <WProgram.h>
+#endif
+#include "MemStream.h"
+
 
 #define setupSPI SPCR = 0x50      //Master mode, MSB first, SCK phase low, SCK idle low, clock/4
 #define setupDDRB DDRB |= 0x2c    //set  SCK(13) MOSI(11) and SS as output 
 #define selectSS digitalWrite(csPin,LOW);  //set the SS to 0 to select 
 #define deselectSS digitalWrite(csPin,HIGH);  //set the SS to 1 to deselect 
-#include "WProgram.h"
-#include "MemStream.h"
+
 
 class SRamSPI: public Memory
 {

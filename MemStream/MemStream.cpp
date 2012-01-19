@@ -39,7 +39,7 @@ void MemStream::flush()
   _head = _tail;
 }
 
-void MemStream::write(uint8_t c)
+size_t MemStream::write(uint8_t c)
 {
   unsigned int i = (unsigned int)(_head + 1) % _bufferSize;
 
@@ -50,7 +50,9 @@ void MemStream::write(uint8_t c)
   if (i != _tail) {
     _memory->write(_address + _head,c);
     _head = i;
+    return(1);
   }
+  return(0);
 }
 
 

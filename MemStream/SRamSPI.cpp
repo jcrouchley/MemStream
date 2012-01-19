@@ -31,6 +31,7 @@ SRamSPI::SRamSPI(byte CSPin)  //constructor
 {
   csPin = CSPin;
   setupDDRB;
+  digitalWrite(10,HIGH); //required to setup SPI
   setupSPI;
   pinMode(csPin , OUTPUT);
   selectSS;
@@ -52,7 +53,6 @@ void SRamSPI::writestream(unsigned int address)
 {
   deselectSS;  //deselect if still selected
   selectSS; //select now
-  digitalWrite(10,HIGH);
   RWdata(0x02);//write to address
   RWdata(address >> 8);//msb address
   RWdata(address);//lsb address 
