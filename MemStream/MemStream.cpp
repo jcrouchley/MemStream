@@ -22,6 +22,17 @@ int MemStream::peek(void)
   }
 }
 
+int MemStream::peek(unsigned int offset)
+{
+  if (_head == _tail) {
+    return -1;
+  } else if (offset > available()) {
+	  return -1;
+  } else {
+    return _memory->read(_address + ((_tail + offset) % _bufferSize));
+  }
+}
+
 int MemStream::read(void)
 {
   // if the head isn't ahead of the tail, we don't have any characters

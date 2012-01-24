@@ -24,7 +24,7 @@ digital pin 11    MOSI
 specified in constructor    SS
 */
 
-#include "WProgram.h"
+
 #include "SRamSPI.h"
 
 SRamSPI::SRamSPI(byte CSPin)  //constructor

@@ -27,6 +27,7 @@ class MemStream : public Stream
     MemStream(Memory* memory, unsigned int address, unsigned int bufferSize);
     virtual int available(void);
     virtual int peek(void);
+	int peek(unsigned int address);
     virtual int read(void);
     virtual void flush(void);
     virtual size_t write(uint8_t);
