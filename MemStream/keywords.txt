@@ -1,4 +1,4 @@
-MemStream KEYWORD1
+MemStream	KEYWORD1
 SRamSPI	KEYWORD1
 readstream	KEYWORD2
 writestream	KEYWORD2
